@@ -1,6 +1,6 @@
 require("dotenv").config();
 var keys = require('./keys.js');
-var fs = require("fs");
+var fs = require('fs');
 var Twitter = require('twitter');
 var client = new Twitter(keys.twitter);
 var Spotify = require("node-spotify-api");
@@ -17,13 +17,11 @@ justDoIt = (song) => fs.readFile("random.txt", "utf8", function(error, response)
 
             if (error) {
             return console.log(error);
-            console.log('banan');
             }
             var song = response;
-        })
-
+            console.log([song,typeof(song)]);
+})
 justDoIt();
-
 
 // Spotify
 if(process.argv[2] === 'spotify-this-song' || process.argv[2] === 'do-what-it-says'){
@@ -31,11 +29,12 @@ if(process.argv[2] === 'spotify-this-song' || process.argv[2] === 'do-what-it-sa
 if(!process.argv[3] && process.argv[2] != 'do-what-it-says'){
     var song = 'The Sign'
 }
+else if(process.argv[2] === 'do-what-it-says'){
+    // justDoIt();
+}
 else{
     var song = process.argv[3]
 }
-
-justDoIt()
 
 spotify.search({ type: 'track', query: song }, function(err, data) {
    
@@ -76,10 +75,7 @@ spotify.search({ type: 'track', query: song }, function(err, data) {
         )
     }
     
-    
     }
-     
-        
  
   });
 }
