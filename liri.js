@@ -20,22 +20,22 @@ justDoIt = (song) => fs.readFile("random.txt", "utf8", function(error, response)
             console.log('banan');
             }
             var song = response;
-            song = song.split(',').join(' ');
-            console.log((typeof(song)));
         })
+
+justDoIt();
 
 
 // Spotify
-if(process.argv[2] === 'spotify-this-song' || process.argv[2] == 'do-what-it-says'){
+if(process.argv[2] === 'spotify-this-song' || process.argv[2] === 'do-what-it-says'){
 
 if(!process.argv[3] && process.argv[2] != 'do-what-it-says'){
     var song = 'The Sign'
 }
-
 else{
     var song = process.argv[3]
 }
 
+justDoIt()
 
 spotify.search({ type: 'track', query: song }, function(err, data) {
    
