@@ -11,32 +11,34 @@ var request = require('request')
 //     if (err) {
 //       return console.log(err);
 //     }
+//      console.log('random.txt updated')
 //   });
 
-justDoIt = (song) => fs.readFile("random.txt", "utf8", function(error, response) {
+fs.readFile("random.txt", "utf8", function(error, response) {
 
             if (error) {
             return console.log(error);
             }
             var song = response;
             console.log([song,typeof(song)]);
-})
-justDoIt();
+
 
 // Spotify
 if(process.argv[2] === 'spotify-this-song' || process.argv[2] === 'do-what-it-says'){
 
 if(!process.argv[3] && process.argv[2] != 'do-what-it-says'){
     var song = 'The Sign'
+    var songLimit = 12;
 }
 else if(process.argv[2] === 'do-what-it-says'){
-    // justDoIt();
+    var songLimit = 5;
 }
 else{
     var song = process.argv[3]
+    var songLimit = 5;
 }
 
-spotify.search({ type: 'track', query: song }, function(err, data) {
+spotify.search({ type: 'track', query: song, limit: songLimit }, function(err, data) {
    
     if (err) {
       return console.log('Error occurred: ' + err);
@@ -54,7 +56,6 @@ spotify.search({ type: 'track', query: song }, function(err, data) {
         Artist Name: ${artistName}\n
         Song Link: ${songLink}\n
         `
-        
     )
     
     }
@@ -79,7 +80,7 @@ spotify.search({ type: 'track', query: song }, function(err, data) {
  
   });
 }
-
+})
 
 
 // Movies
