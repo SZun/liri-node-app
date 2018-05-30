@@ -58,7 +58,7 @@ spotify.search({ type: 'track', query: song, limit: songLimit }, function(err, d
     
     }
     else{
-        console.log(data.tracks.items.length);
+        // console.log(data.tracks.items.length);
     for(var i = 0; i < data.tracks.items.length; i++){
         var songLink = data.tracks.items[i].preview_url;
         var albumName = data.tracks.items[i].album.name;
