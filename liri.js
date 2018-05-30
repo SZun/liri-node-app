@@ -20,8 +20,6 @@ fs.readFile("random.txt", "utf8", function(error, response) {
             return console.log(error);
             }
             var song = response;
-            console.log([song,typeof(song)]);
-
 
 // Spotify
 if(process.argv[2] === 'spotify-this-song' || process.argv[2] === 'do-what-it-says'){
@@ -51,10 +49,10 @@ spotify.search({ type: 'track', query: song, limit: songLimit }, function(err, d
     var songName = data.tracks.items[11].name;
     console.log(
         `
-        Song Name: ${songName}\n
-        Album Name: ${albumName}\n
-        Artist Name: ${artistName}\n
-        Song Link: ${songLink}\n
+        Song Name: ${songName}
+        Album Name: ${albumName}
+        Artist Name: ${artistName}
+        Song Link: ${songLink}
         `
     )
     
@@ -68,10 +66,10 @@ spotify.search({ type: 'track', query: song, limit: songLimit }, function(err, d
         var songName = data.tracks.items[i].name;
         console.log(
         `
-        Song Name: ${songName}\n
-        Album Name: ${albumName}\n
-        Artist Name: ${artistName}\n
-        Song Link: ${songLink}\n
+        Song Name: ${songName}
+        Album Name: ${albumName}
+        Artist Name: ${artistName}
+        Song Link: ${songLink}
         `
         )
     }
@@ -112,8 +110,8 @@ request("http://www.omdbapi.com/?t="+movie+"&y=&plot=short&apikey=trilogy", func
     Movie Language: ${movieLanguage}  
     Country of Origin: ${movieCountry}  
     Actors: ${movieActors}  
-    Release Year: ${movieYear}\n  
-    Movie Plot: ${moviePlot}\n`  
+    Release Year: ${movieYear}  
+    Movie Plot: ${moviePlot}`  
     );
 
     }
@@ -124,7 +122,7 @@ request("http://www.omdbapi.com/?t="+movie+"&y=&plot=short&apikey=trilogy", func
 
 // Twitter
 if(process.argv[2] === 'my-tweets'){
-client.get('statuses/user_timeline', 'Zun39280829', function (error, response) {
+client.get('statuses/user_timeline', function (error, response) {
     if (!error) {
         for(var i = 0; i < response.length; i++){
             var tweetText = response[i].text
@@ -132,7 +130,7 @@ client.get('statuses/user_timeline', 'Zun39280829', function (error, response) {
             console.log(
             `
             ${tweetText}
-            Tweeted At: ${tweetTime}\n`
+            Tweeted At: ${tweetTime}`
             )
         }
         }
